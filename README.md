@@ -75,24 +75,27 @@ __Note:__ Remember to add and save port 2200 with _Application __as__ Custom and
 Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
 
 	sudo ufw allow ssh
-  sudo ufw allow www
-  sudo ufw allow ntp
-  sudo ufw allow 2200/tcp
+  	sudo ufw allow www
+  	sudo ufw allow ntp
+  	sudo ufw allow 2200/tcp
 	sudo ufw allow 80/tcp
 	sudo ufw allow 123/udp
 	sudo ufw enable 
-  sudo ufw status
+  	sudo ufw status
  
 ## Configure the local timezone to UTC
+
 1. Configure the time zone `sudo dpkg-reconfigure tzdata`
 2. It is already set to UTC.
 
 ## Install and configure Apache to serve a Python mod_wsgi application
+
 1. Install Apache `sudo apt-get install apache2`
 2. Install mod_wsgi `sudo apt-get install python-setuptools libapache2-mod-wsgi`
 3. Restart Apache `sudo service apache2 restart`
 
 ## Install and configure PostgreSQL
+
 1. Install PostgreSQL `sudo apt-get install postgresql`
 2. Check if no remote connections are allowed `sudo vim /etc/postgresql/9.3/main/pg_hba.conf`
 3. Login as user "postgres" `sudo su - postgres`
@@ -180,7 +183,7 @@ Configure the Uncomplicated Firewall (UFW) to only allow incoming connections fo
 	sys.path.insert(0,"/var/www/FlaskApp/")
 
 	from FlaskApp import app as application
-	application.secret_key = 'Add your secret key'
+	application.secret_key = 'super_secret_key'
 	```
 
 ## Restart Apache
