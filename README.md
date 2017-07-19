@@ -186,3 +186,4 @@ Configure the Uncomplicated Firewall (UFW) to only allow incoming connections fo
 ## References:
 1. Udacity's FSND Forum
 2. https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+3. https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps
