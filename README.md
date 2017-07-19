@@ -12,20 +12,13 @@ You can visit http://35.164.53.24/ for the website deployed.
 
 ## Instructions for SSH access to the instance
 
-1. Download Private Key below
+1. Download Private Key from the __SSH keys__ section in the __Account__ section on Amazon Lightsail.
 2. Move the private key file into the folder `~/.ssh` (where ~ is your environment's home directory). So if you downloaded the file to the Downloads folder, just execute the following command in your terminal.
-	```mv ~/Downloads/udacity_key.rsa ~/.ssh/```
+	```mv ~/Downloads/Lightsail-key.pem ~/.ssh/```
 3. Open your terminal and type in
-	```chmod 600 ~/.ssh/udacity_key.rsa```
+	```chmod 400 ~/.ssh/Lightsail-key.pem```
 4. In your terminal, type in
-	```ssh -i ~/.ssh/udacity_key.rsa root@52.24.125.52```
-5. Development Environment Information
-
-	Public IP Address
-
-	35.164.53.24
-	
-	Private Key ( is not provided here. )
+	```ssh -i ~/.ssh/Lightsail-key.pem ubunut@35.164.53.24```
 
 ## Create a new user named grader
 
@@ -44,9 +37,9 @@ You can visit http://35.164.53.24/ for the website deployed.
 	$ su - grader
 	$ mkdir .ssh
 	$ touch .ssh/authorized_keys
-	$ vim .ssh/authorized_keys
+	$ vi .ssh/authorized_keys
 	```
-	Copy the public key generated on your local machine to this file and save
+	Copy the public key (_one with the extension .pub_) generated on your local machine to this file and save
   
 	```
 	$ chmod 700 .ssh
@@ -56,7 +49,7 @@ You can visit http://35.164.53.24/ for the website deployed.
 3. reload SSH using `service ssh restart`
 4. now you can use ssh to login with the new user you created
 
-	`ssh -i [privateKeyFilename] grader@52.24.125.52`
+	`ssh -i ~/.ssh/[privateKeyFilename] grader@35.164.53.24`
 
 ## Update all currently installed packages
 
@@ -65,7 +58,7 @@ You can visit http://35.164.53.24/ for the website deployed.
 
 ## Change the SSH port from 22 to 2200
 
-1. Use `sudo vim /etc/ssh/sshd_config` and then change Port 22 to Port 2200 , save & quit.
+1. Use `sudo vi /etc/ssh/sshd_config` and then change Port 22 to Port 2200 , save & quit.
 2. Reload SSH using `sudo service ssh restart`
 
 __Note:__ Remember to add and save port 2200 with _Application __as__ Custom and Protocol __as__ TCP_ in the Networking section of your instance on Amazon Lightsail. 
@@ -97,7 +90,7 @@ Configure the Uncomplicated Firewall (UFW) to only allow incoming connections fo
 ## Install and configure PostgreSQL
 
 1. Install PostgreSQL `sudo apt-get install postgresql`
-2. Check if no remote connections are allowed `sudo vim /etc/postgresql/9.3/main/pg_hba.conf`
+2. Check if no remote connections are allowed `sudo vi /etc/postgresql/9.3/main/pg_hba.conf`
 3. Login as user "postgres" `sudo su - postgres`
 4. Get into postgreSQL shell `psql`
 5. Create a new database named catalog  and create a new user named catalog in postgreSQL shell
@@ -143,7 +136,7 @@ Configure the Uncomplicated Firewall (UFW) to only allow incoming connections fo
 
 
 ## Configure and Enable a New Virtual Host
-1. Create FlaskApp.conf to edit: `sudo nano /etc/apache2/sites-available/FlaskApp.conf`
+1. Create FlaskApp.conf to edit: `sudo vi /etc/apache2/sites-available/FlaskApp.conf`
 2. Add the following lines of code to the file to configure the virtual host. 
 	
 	```
@@ -172,7 +165,7 @@ Configure the Uncomplicated Firewall (UFW) to only allow incoming connections fo
 	
 	```
 	cd /var/www/FlaskApp
-	sudo nano flaskapp.wsgi 
+	sudo vi flaskapp.wsgi 
 	```
 2. Add the following lines of code to the flaskapp.wsgi file:
 	
@@ -191,4 +184,5 @@ Configure the Uncomplicated Firewall (UFW) to only allow incoming connections fo
 1. Restart Apache `sudo service apache2 restart `
 
 ## References:
-https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+1. Udacity's FSND Forum
+2. https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
