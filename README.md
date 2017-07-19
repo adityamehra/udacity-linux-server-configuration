@@ -6,7 +6,7 @@ In this project, a Linux virtual machine needs to be configurated to support the
 
 You can visit http://35.164.53.24/ for the website deployed.
 
-# You may refer this Udacity course
+## You may refer this Udacity course
 
 1. https://www.udacity.com/course/configuring-linux-web-servers--ud299
 
