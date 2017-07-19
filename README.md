@@ -134,8 +134,9 @@ Configure the Uncomplicated Firewall (UFW) to only allow incoming connections fo
 8. Rename `server.py` to `__init__.py` using `sudo mv website.py __init__.py`, if `__init__.py` not present.
 9. Edit `database_setup.py` and `fill_catalog.py` to change `engine = create_engine('sqlite:///catalog.db')` to `engine = create_engine('postgresql://catalog:password@localhost/catalog')`, if not already done.
 10. Install pip `sudo apt-get install python-pip`
-11. Use pip to install dependencies `sudo pip install flask packaging oauth2client redis passlib flask-httpauth`
+11. Use pip to install dependencies 
 12. `sudo pip install sqlalchemy flask-sqlalchemy psycopg2 bleach requests`
+    `sudo pip install flask packaging oauth2client redis passlib flask-httpauth`
 13. Install psycopg2 `sudo apt-get -qqy install postgresql python-psycopg2`
 14. Create database schema `sudo python database_setup.py`
 15. Fill database `sudo pip install fill_catalog.py`
